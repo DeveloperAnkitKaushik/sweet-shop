@@ -26,6 +26,7 @@ export default function HeroSlider() {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [slides, setSlides] = useState([]);
     const [activeIndex, setActiveIndex] = useState(0);
+    const [loading, setLoading] = useState(true);
     const swiperRef = useRef(null);
     const { add, getQty } = useCart();
 
@@ -33,6 +34,7 @@ export default function HeroSlider() {
         const fetch = async () => {
             if (!isAuthenticated()) {
                 setSlides([]);
+                setLoading(false);
                 return;
             }
 
@@ -52,6 +54,8 @@ export default function HeroSlider() {
             } catch (e) {
                 console.error('HeroSlider: Failed to fetch sweets:', e);
                 setSlides([]);
+            } finally {
+                setLoading(false);
             }
         };
         fetch();
@@ -80,82 +84,91 @@ export default function HeroSlider() {
     return (
         <section className={styles.heroSection}>
             <div className={styles.inner}>
-                <div className={styles.bigWord}>{(activeSlide.name || '').split(/[\s\u2013\u2014]+/)[0]}</div>
-
-                {slides.length > 0 && (
+                {loading ? (
+                    <div className={styles.loader}>
+                        <div className={styles.spinner}></div>
+                        <p>Loading sweets...</p>
+                    </div>
+                ) : (
                     <>
-                        <Swiper
-                            onSwiper={(swiper) => {
-                                swiperRef.current = swiper;
-                            }}
-                            modules={[Thumbs, Autoplay, EffectFade]}
-                            autoplay={{ delay: 3500, disableOnInteraction: false }}
-                            loop
-                            effect="fade"
-                            fadeEffect={{ crossFade: true }}
-                            slidesPerView={1}
-                            thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
-                            className={styles.mainSwiper}
-                            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-                        >
-                            {slides.map((item) => (
-                                <SwiperSlide key={item.name}>
-                                    <div className={styles.slideWrap}>
-                                        <div className={styles.centerImageWrap}>
-                                            <img src={item.image} alt={item.name} className={styles.centerImage} />
-                                        </div>
-                                        <div className={styles.addToCart}>
-                                            <span>Add to cart</span>
-                                            <button
-                                                className={styles.plusBtn}
-                                                onClick={() => handleAddToCart(item._id, item.name)}
-                                                disabled={item.quantity === 0}
-                                            >
-                                                +
-                                            </button>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
+                        <div className={styles.bigWord}>{(activeSlide.name || '').split(/[\s\u2013\u2014]+/)[0]}</div>
 
-                        <div className={styles.bottomBar}>
-                            <div className={styles.descBox}>
-                                <p className={styles.descText}>{activeSlide.description}</p>
-                            </div>
-
-                            <div className={styles.pagerBox}>
-                                <button onClick={() => swiperRef.current?.slidePrev()} className={styles.navBtn}>
-                                    ←
-                                </button>
-                                <div className={styles.pagerInfo}>
-                                    <div className={styles.name}>{activeSlide.name}</div>
-                                    <div className={styles.price}>₹{activeSlide.price}</div>
-                                </div>
-                                <button onClick={() => swiperRef.current?.slideNext()} className={styles.navBtn}>
-                                    →
-                                </button>
-                            </div>
-
-                            <div className={styles.thumbsWrapper}>
+                        {slides.length > 0 && (
+                            <>
                                 <Swiper
-                                    modules={[Thumbs]}
-                                    onSwiper={setThumbsSwiper}
-                                    watchSlidesProgress
-                                    slidesPerView={3}
-                                    spaceBetween={10}
-                                    className={styles.thumbsSwiper}
+                                    onSwiper={(swiper) => {
+                                        swiperRef.current = swiper;
+                                    }}
+                                    modules={[Thumbs, Autoplay, EffectFade]}
+                                    autoplay={{ delay: 3500, disableOnInteraction: false }}
+                                    loop
+                                    effect="fade"
+                                    fadeEffect={{ crossFade: true }}
+                                    slidesPerView={1}
+                                    thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+                                    className={styles.mainSwiper}
+                                    onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
                                 >
                                     {slides.map((item) => (
-                                        <SwiperSlide key={`thumb-${item.name}`}>
-                                            <div className={styles.thumbCard}>
-                                                <img src={item.image} alt={item.name} />
+                                        <SwiperSlide key={item.name}>
+                                            <div className={styles.slideWrap}>
+                                                <div className={styles.centerImageWrap}>
+                                                    <img src={item.image} alt={item.name} className={styles.centerImage} />
+                                                </div>
+                                                <div className={styles.addToCart}>
+                                                    <span>Add to cart</span>
+                                                    <button
+                                                        className={styles.plusBtn}
+                                                        onClick={() => handleAddToCart(item._id, item.name)}
+                                                        disabled={item.quantity === 0}
+                                                    >
+                                                        +
+                                                    </button>
+                                                </div>
                                             </div>
                                         </SwiperSlide>
                                     ))}
                                 </Swiper>
-                            </div>
-                        </div>
+
+                                <div className={styles.bottomBar}>
+                                    <div className={styles.descBox}>
+                                        <p className={styles.descText}>{activeSlide.description}</p>
+                                    </div>
+
+                                    <div className={styles.pagerBox}>
+                                        <button onClick={() => swiperRef.current?.slidePrev()} className={styles.navBtn}>
+                                            ←
+                                        </button>
+                                        <div className={styles.pagerInfo}>
+                                            <div className={styles.name}>{activeSlide.name}</div>
+                                            <div className={styles.price}>₹{activeSlide.price}</div>
+                                        </div>
+                                        <button onClick={() => swiperRef.current?.slideNext()} className={styles.navBtn}>
+                                            →
+                                        </button>
+                                    </div>
+
+                                    <div className={styles.thumbsWrapper}>
+                                        <Swiper
+                                            modules={[Thumbs]}
+                                            onSwiper={setThumbsSwiper}
+                                            watchSlidesProgress
+                                            slidesPerView={3}
+                                            spaceBetween={10}
+                                            className={styles.thumbsSwiper}
+                                        >
+                                            {slides.map((item) => (
+                                                <SwiperSlide key={`thumb-${item.name}`}>
+                                                    <div className={styles.thumbCard}>
+                                                        <img src={item.image} alt={item.name} />
+                                                    </div>
+                                                </SwiperSlide>
+                                            ))}
+                                        </Swiper>
+                                    </div>
+                                </div>
+                            </>
+                        )}
                     </>
                 )}
             </div>
