@@ -1,0 +1,69 @@
+.container{
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+}
+
+.innercontainer{
+    background-color: #5f201b;
+    display: flex;
+    color: var(--secondary-color);
+    width: 100%;
+    padding: 2rem 3rem;
+    border-radius: 40px;
+}
+
+.para{
+    width: 33%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.logo{
+    width: 33%;
+    text-align: center;
+    font-family: "Lobster Two", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 2rem;
+    color: var(--secondary-color);
+}
+.social{
+    width: 33%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+}
+.socialLink,
+.para{
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+    .innercontainer{
+        padding: 1rem;
+    }
+    .para{
+        font-size: 1rem;
+    }
+    .logo{
+        font-size: 2rem;
+    }
+    .socialLink{
+        font-size: 1rem;
+    }
+}
+@media (max-width: 550px) {
+    .para{
+        display: none;
+    }
+    .social{
+        display: none;
+    }
+    .logo{
+        width: 100%;
+    }
+}

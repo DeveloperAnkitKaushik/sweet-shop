@@ -1,0 +1,123 @@
+/* Container for the entire section - set to 100% width as requested */
+.featuresSection {
+    width: 100%;
+    /* As per your request, occupy full width */
+    /* Dark red background from your image */
+    padding: 3rem 0;
+    /* Vertical padding */
+    color: #db99a8;
+    /* Light pinkish text color */
+    margin-top: 1rem;
+}
+
+/* Inner container to center and limit width, and use flex for layout */
+.featuresContainer {
+    /* Adjust as needed for your overall layout */
+    display: flex;
+    justify-content: space-around;
+    /* Distribute items evenly */
+    align-items: center;
+    /* Horizontal padding for smaller screens */
+    flex-wrap: wrap;
+    /* Allow items to wrap on smaller screens */
+}
+
+.featureItem {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    /* Space between icon and text */
+    flex: 1;
+    /* Allow items to grow and shrink */
+    min-width: 280px;
+    /* Minimum width before wrapping */
+    padding: 1rem 0;
+    /* Vertical padding for items, important when wrapped */
+}
+
+.featureIconWrap {
+    width: 60px;
+    /* Size of the icon container */
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Optional: if you want a subtle background for the icon */
+    /* background-color: rgba(255, 255, 255, 0.05); */
+    /* border-radius: 50%; */
+}
+
+.featureIcon {
+    width: 40px;
+    /* Size of the SVG icon itself */
+    height: 40px;
+    stroke: #F7DADD;
+    /* Color of the SVG lines/outline */
+}
+
+.featureContent {
+    text-align: left;
+}
+
+.featureTitle {
+    font-size: 1.5rem;
+    /* Larger title font */
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    /* Space below title */
+    color: #F7DADD;
+    /* Matching title color */
+}
+
+.featureDescription {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin: 0;
+    color: #D1BFC3;
+    /* Slightly desaturated description color */
+}
+
+/* Vertical divider style */
+.featureDivider {
+    width: 1px;
+    height: 80px;
+    /* Height of the divider */
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Semi-transparent white */
+    margin: 0 2rem;
+    /* Space around the divider */
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .featuresContainer {
+        flex-direction: column;
+        /* Stack items vertically on smaller screens */
+        align-items: flex-start;
+        /* Align stacked items to the left */
+        gap: 1.5rem;
+        /* Space between stacked items */
+    }
+
+    .featureItem {
+        min-width: unset;
+        /* Remove min-width when stacking */
+        width: 100%;
+        /* Take full width when stacked */
+    }
+
+    .featureDivider {
+        width: 80%;
+        /* Horizontal line when stacked */
+        height: 1px;
+        margin: 1.5rem 0;
+        /* Adjust margin for horizontal divider */
+        align-self: center;
+        /* Center the horizontal divider */
+    }
+}
+@media (max-width: 480px) {
+    .featuresContainer{
+        gap: 0;
+    }
+}

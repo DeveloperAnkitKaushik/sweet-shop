@@ -30,7 +30,7 @@ app.use(limiter);
 
 app.use(cors({
     origin: process.env.NODE_ENV === 'production'
-        ? ['https://your-frontend-domain.com']
+        ? [process.env.FRONTEND_URL || 'https://your-frontend.vercel.app']
         : ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:5000'],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],

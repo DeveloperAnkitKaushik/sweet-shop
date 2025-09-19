@@ -1,0 +1,428 @@
+.container {
+    background-color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    padding: 4rem 1rem;
+    text-align: center;
+    color: var(--text-white);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.heroTitle {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.heroSubtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.heroButtons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.ctaButton {
+    background-color: var(--text-white);
+    color: var(--primary-color);
+    padding: 1rem 2rem;
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-lg);
+}
+
+.ctaButton:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+}
+
+.secondaryButton {
+    background-color: transparent;
+    color: var(--text-white);
+    padding: 1rem 2rem;
+    border: 2px solid var(--text-white);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: var(--transition);
+}
+
+.secondaryButton:hover {
+    background-color: var(--text-white);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Search Section */
+.searchSection {
+    padding-top: 1rem;
+    background-color: var(--primary-color);
+}
+
+.searchContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.sectionTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    text-align: center;
+    font-family: "lobster two";
+    font-style: italic;
+}
+
+.searchInputGroup {
+    display: flex;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+
+}
+
+.searchInput {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: var(--radius-lg);
+    font-size: 1rem;
+    transition: var(--transition);
+    background: rgba(255, 255, 255, 0.9);
+    color: #676767;
+    padding: 0.9rem 1.25rem;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 0 0 3px rgb(245 158 11 / 0.1);
+    backdrop-filter: blur(6px);
+    font-weight: bold;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: none;
+    box-shadow: 0 0 0 3px rgb(245 158 11 / 0.1);
+}
+
+.categorySelect {
+    padding: 1rem 1.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    font-size: 1rem;
+    background-color: var(--bg-primary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.categorySelect:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.searchButton {
+    background-color: var(--primary-color);
+    color: var(--text-white);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.searchButton:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.sweetsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allows cards to wrap to the next line */
+    gap: 2rem;
+    /* The space between your cards */
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* The new card style */
+.sweetCard {
+    flex-grow: 1;
+    flex-basis: calc(50% - 1rem);
+    background-color: var(--card-bg);
+    border-radius: var(--radius-card);
+    padding: 1.5rem;
+    text-align: center;
+    transition: var(--transition);
+    color: var(--text-primary-light);
+    border: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+}
+
+/* The hover effect from the image */
+.sweetCard:hover {
+    background-color: var(--card-bg-hover);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px rgba(36, 18, 18, 0.3);
+}
+
+/* Style for the floating image */
+.sweetImage {
+    width: 90%;
+    margin: -4.5rem auto 0;
+    /* Pulls the image up */
+    display: block;
+    filter: drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.4));
+    transition: transform 0.3s ease;
+    /* This prevents the image from blocking the hover on the card */
+    pointer-events: none;
+}
+
+.sweetCard:hover .sweetImage {
+    transform: rotate(-5deg) scale(1.05);
+    /* Add a little life on hover */
+}
+
+.sweetContent {
+    margin-top: 1rem;
+}
+
+.sweetName {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.sweetDescription {
+    color: var(--text-secondary-light);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-top: 0.5rem;
+    /* Prevents card height from changing based on description length */
+    min-height: 42px;
+}
+
+/* Footer layout */
+.sweetFooter {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Price circle */
+.price {
+    background-color: var(--controls-bg);
+    color: var(--text-primary-light);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Quantity Controls */
+.qtyControls {
+    display: flex;
+    align-items: center;
+    background-color: var(--controls-bg);
+    border-radius: 999px;
+    /* Pill shape */
+    padding: 0.25rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.qtyBtn {
+    background-color: transparent;
+    border: none;
+    color: var(--text-secondary-light);
+    font-size: 1.5rem;
+    font-weight: 400;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.qtyBtn:hover {
+    color: var(--text-primary-light);
+}
+
+.qtyValue {
+    font-weight: 700;
+    font-size: 1rem;
+    min-width: 20px;
+    text-align: center;
+    color: var(--text-primary-light);
+}
+
+/* Loading and Empty States */
+.loadingContainer {
+    text-align: center;
+    padding: 4rem 1rem;
+}
+
+.loadingSpinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--border-color);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.emptyState {
+    text-align: center;
+    padding: 4rem 1rem;
+    color: var(--text-secondary);
+}
+
+.qualitySection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 5rem;
+    margin-top: 4rem;
+}
+
+.qualityImage {
+    width: 80%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.qualityImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Responsive Design */
+@media (min-width: 1024px) {
+    .sweetCard {
+        /* 4 items per row */
+        flex-basis: calc(25% - 1.5rem);
+        /* Adjusting for 2rem gap */
+    }
+}
+
+@media (max-width: 768px) {
+    .heroTitle {
+        font-size: 2.5rem;
+    }
+
+    .heroSubtitle {
+        font-size: 1.125rem;
+    }
+
+    .heroButtons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .searchInputGroup {
+        flex-direction: column;
+    }
+
+    .sweetCard {
+        /* 3 items per row */
+        flex-basis: calc(33.333% - 1.34rem);
+        /* Adjusting for 2rem gap */
+    }
+
+    .featuresGrid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 2rem 1rem;
+    }
+
+    .heroTitle {
+        font-size: 2rem;
+    }
+
+    .heroSubtitle {
+        font-size: 1rem;
+    }
+
+    .ctaButton,
+    .secondaryButton {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .searchSection,
+    .sweetsSection,
+    .featuresSection {
+        padding: 2rem 1rem;
+    }
+    .sweetsContainer{
+        padding: 0;
+        justify-content: center;
+    }
+    .qualitySection{
+        display: none;
+    }
+}
